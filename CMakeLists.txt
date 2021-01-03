@@ -3,7 +3,16 @@ project(obs-rtspserver)
 
 add_subdirectory(rtsp-server)
 
-find_package(FFmpeg COMPONENTS avutil avfilter REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBAV REQUIRED IMPORTED_TARGET
+    libavdevice
+    libavfilter
+    libavformat
+    libavcodec
+    libswresample
+    libswscale
+    libavutil
+)
 
 set(CMAKE_PREFIX_PATH "${QTDIR}")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)

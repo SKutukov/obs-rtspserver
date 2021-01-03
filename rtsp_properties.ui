@@ -174,7 +174,27 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>rtsp://localhost:</string>
+            <string>rtsp://</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+            <widget class="QLineEdit" name="labelHost">
+                <property name="text">
+                    <string>192.168.1.205</string>
+                </property>
+            </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelAddressPostfix">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>:</string>
            </property>
           </widget>
          </item>

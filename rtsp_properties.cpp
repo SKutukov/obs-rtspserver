@@ -67,7 +67,9 @@ MyRtspOutput *RtspProperties::GetMyRtspOutput()
 void RtspProperties::onButtonAddressCopy()
 {
 	QClipboard *clipboard = QApplication::clipboard();
-	QString url = "rtsp://localhost:";
+	QString url = "rtsp://";
+	url.append(ui->labelHost->text());
+	url.append(":");
 	url.append(ui->spinBoxPort->text());
 	url.append("/live");
 	clipboard->setText(url);
