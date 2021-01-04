@@ -23,6 +23,7 @@ If you want to use compressed file to install manually, you can unzip it (e.g.: 
 * Untar, e.g.: tar -xzvf obs-rtspserver-v1.1.1-linux.tar.gz -C $HOME/.config/obs-studio/plugins/
 
 # Build
+* build inside [obs-studio](https://github.com/obsproject/obs-studio) tree.
 * Install cmake, visual studio(only windows) and qt.
 * Download and configure the source code of obs-studio.
 * Copy source code to (obs-studio source code)/plugins/obs-rtspserver/
