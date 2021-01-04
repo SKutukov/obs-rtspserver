@@ -6,6 +6,8 @@
 #include "rtsp_properties.h"
 #include "ui_rtsp_properties.h"
 #include "helper.h"
+#include <string>
+
 
 RtspProperties::RtspProperties(QWidget *parent)
 	: QDialog(parent), ui(new Ui::RtspProperties)
@@ -31,10 +33,12 @@ RtspProperties::RtspProperties(QWidget *parent)
 
 	obs_data_t *data = rtsp_output_read_data();
 	int port = obs_data_get_int(data, "port");
+	std::string host = obs_data_get_string(data, "host");
 	obs_data_release(data);
 
 	ui->checkBoxAuto->setChecked(autoStart);
 	ui->spinBoxPort->setValue(port);
+	ui->labelHost->setText(QString::fromStdString(host));
 	ui->labelMessage->setStyleSheet("QLabel { color : red; }");
 	ui->labelMessage->setVisible(false);
 	ui->pushButtonStop->setEnabled(false);
@@ -50,6 +54,7 @@ RtspProperties::~RtspProperties()
 void RtspProperties::EnableOptions(bool enable)
 {
 	ui->spinBoxPort->setEnabled(enable);
+	ui->labelHost->setEnabled(enable);
 	ui->pushButtonStart->setEnabled(enable);
 	ui->pushButtonStop->setEnabled(!enable);
 }
@@ -126,6 +131,8 @@ void RtspProperties::SaveSetting()
 	}
 	auto data = rtsp_output_read_data(true);
 	int port = ui->spinBoxPort->value();
+	std::string host = ui->labelHost->text().toStdString();
+	obs_data_set_string(data, "host", host.c_str());
 	obs_data_set_int(data, "port", port);
 	rtsp_output_save_data(data);
 }

@@ -181,7 +181,7 @@
          <item>
             <widget class="QLineEdit" name="labelHost">
                 <property name="text">
-                    <string>192.168.1.205</string>
+                    <string>localhost</string>
                 </property>
             </widget>
          </item>
